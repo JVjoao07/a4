@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NutriFácil - Descubra o plano alimentar perfeito para sua saúde. Oferecemos dietas personalizadas como Mediterrânea, Low Carb, Cetogênica e Vegetariana.">
+    <meta name="keywords" content="dieta, nutrição, saúde, alimentação saudável, plano alimentar">
+    <title>NutriFácil - Sua Jornada para uma Vida Mais Saudável</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#inicio" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <header>
+        <nav aria-label="Menu principal">
+            <div class="logo" role="banner">NutriFácil</div>
+            <ul class="menu" role="menubar">
+                <li role="none"><a href="#inicio" role="menuitem">Início</a></li>
+                <li role="none"><a href="#dietas" role="menuitem">Dietas</a></li>
+                <li role="none"><a href="#sobre" role="menuitem">Sobre</a></li>
+                <li role="none"><a href="#contato" role="menuitem">Contato</a></li>
+            </ul>
+            <button class="menu-mobile" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero" aria-label="Introdução">
+            <div class="hero-content">
+                <h1>Transforme sua vida com NutriFácil</h1>
+                <p>Descubra o plano alimentar perfeito para você</p>
+                <a href="#dietas" class="btn">Conheça Nossas Dietas</a>
+            </div>
+        </section>
+
+        <section id="dietas" class="dietas" aria-label="Plano alimentar personalizado">
+            <h2>Seu Plano Alimentar Personalizado</h2>
+            <form id="plano-form" class="plano-form" aria-label="Formulário de plano alimentar">
+                <div class="form-section">
+                    <h3>Informações Pessoais</h3>
+                    <div class="form-group">
+                        <label for="peso">Peso (kg):</label>
+                        <input type="number" id="peso" name="peso" min="30" max="300" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="altura">Altura (cm):</label>
+                        <input type="number" id="altura" name="altura" min="100" max="250" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idade">Idade (anos):</label>
+                        <input type="number" id="idade" name="idade" min="12" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Sexo:</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="sexo" value="masculino" required>
+                                Masculino
+                            </label>
+                            <label>
+                                <input type="radio" name="sexo" value="feminino" required>
+                                Feminino
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Objetivos e Preferências</h3>
+                    <div class="form-group">
+                        <label for="objetivo">Objetivo Principal:</label>
+                        <select id="objetivo" name="objetivo" required>
+                            <option value="">Selecione seu objetivo</option>
+                            <option value="emagrecimento">Emagrecimento</option>
+                            <option value="hipertrofia">Hipertrofia</option>
+                            <option value="manutencao">Manutenção do Peso</option>
+                            <option value="saude">Melhoria da Saúde</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dieta">Tipo de Dieta:</label>
+                        <select id="dieta" name="dieta" required>
+                            <option value="">Selecione a dieta</option>
+                            <option value="mediterranea">Mediterrânea</option>
+                            <option value="low-carb">Low Carb</option>
+                            <option value="cetogenica">Cetogênica</option>
+                            <option value="vegetariana">Vegetariana</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Preferências Alimentares</h3>
+                    <div class="preferencias-grid">
+                        <div class="form-group">
+                            <label>Proteínas:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="proteinas" value="frango"> Frango</label>
+                                <label><input type="checkbox" name="proteinas" value="carne"> Carne Vermelha</label>
+                                <label><input type="checkbox" name="proteinas" value="peixe"> Peixe</label>
+                                <label><input type="checkbox" name="proteinas" value="ovo"> Ovos</label>
+                                <label><input type="checkbox" name="proteinas" value="leguminosas"> Leguminosas</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Legumes:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="legumes" value="cenoura"> Cenoura</label>
+                                <label><input type="checkbox" name="legumes" value="abobrinha"> Abobrinha</label>
+                                <label><input type="checkbox" name="legumes" value="berinjela"> Berinjela</label>
+                                <label><input type="checkbox" name="legumes" value="pepino"> Pepino</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Verduras:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="verduras" value="alface"> Alface</label>
+                                <label><input type="checkbox" name="verduras" value="couve"> Couve</label>
+                                <label><input type="checkbox" name="verduras" value="espinafre"> Espinafre</label>
+                                <label><input type="checkbox" name="verduras" value="rucula"> Rúcula</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Carboidratos:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="carboidratos" value="arroz"> Arroz</label>
+                                <label><input type="checkbox" name="carboidratos" value="batata"> Batata</label>
+                                <label><input type="checkbox" name="carboidratos" value="mandioca"> Mandioca</label>
+                                <label><input type="checkbox" name="carboidratos" value="pao"> Pão</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Alergias e Intolerâncias</h3>
+                    <div class="form-group">
+                        <div class="checkbox-group alergias">
+                            <label><input type="checkbox" name="alergias" value="lactose"> Lactose</label>
+                            <label><input type="checkbox" name="alergias" value="gluten"> Glúten</label>
+                            <label><input type="checkbox" name="alergias" value="leite"> Proteína do Leite</label>
+                            <label><input type="checkbox" name="alergias" value="ovo"> Ovo</label>
+                            <label><input type="checkbox" name="alergias" value="frutos_mar"> Frutos do Mar</label>
+                            <label><input type="checkbox" name="alergias" value="nenhuma"> Nenhuma</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gerar Plano Alimentar</button>
+            </form>
+
+            <div id="resultado-plano" class="resultado-plano" hidden>
+                <h3>Seu Plano Alimentar Personalizado</h3>
+                <div id="plano-detalhes"></div>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre" aria-label="Sobre nós">
+            <div class="container">
+                <h2>Sobre o NutriFácil</h2>
+                <div class="sobre-content">
+                    <div class="sobre-texto">
+                        <p>O NutriFácil nasceu da necessidade de tornar a alimentação saudável mais acessível e prática para todos. Nossa missão é ajudar pessoas a alcançarem seus objetivos de saúde através de planos alimentares personalizados e sustentáveis.</p>
+                        <p>Nossa equipe é composta por nutricionistas experientes e apaixonados por saúde e bem-estar, prontos para guiar você em sua jornada rumo a uma vida mais saudável.</p>
+                    </div>
+                    <div class="sobre-valores">
+                        <h3>Nossos Valores</h3>
+                        <ul>
+                            <li>Compromisso com a saúde</li>
+                            <li>Personalização dos planos</li>
+                            <li>Base científica</li>
+                            <li>Sustentabilidade</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contato" aria-label="Contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <form class="contato-form" aria-label="Formulário de contato">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+
+        <div id="modal" class="modal" role="dialog" aria-labelledby="modal-titulo" aria-modal="true">
+            <div class="modal-content">
+                <button class="fechar" aria-label="Fechar modal">&times;</button>
+                <h2 id="modal-titulo"></h2>
+                <p id="modal-descricao"></p>
+                <div class="modal-detalhes">
+                    <h3>Benefícios:</h3>
+                    <ul id="modal-beneficios"></ul>
+                    <h3>Alimentos Recomendados:</h3>
+                    <ul id="modal-alimentos"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NutriFácil. Todos os direitos reservados.</p>
+            <button id="voltar-topo" class="btn-voltar-topo" aria-label="Voltar ao topo">↑</button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
