@@ -4,8 +4,10 @@
     --cor-texto: #2c3e50;
     --cor-fundo: #f8f9fa;
     --cor-card: #ffffff;
-    --sombra: 0 2px 10px rgba(0,0,0,0.1);
-    --transicao: all 0.3s ease;
+    --sombra: 0 4px 15px rgba(0,0,0,0.1);
+    --sombra-hover: 0 8px 25px rgba(0,0,0,0.15);
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradiente-primario: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
 }
 
 * {
@@ -63,15 +65,83 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--cor-primaria);
+    display: flex;
+    align-items: center;
 }
 
+.logo-svg {
+    width: 180px;
+    height: 45px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-svg {
+    transform: scale(1.05);
+}
+
+.logo-leaf {
+    transform-origin: center;
+    animation: leafFloat 3s ease-in-out infinite;
+}
+
+.logo-plate {
+    transform-origin: center;
+    animation: plateRotate 20s linear infinite;
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+@keyframes leafFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-2px) rotate(2deg);
+    }
+}
+
+@keyframes plateRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Menu */
 .menu {
     display: flex;
     list-style: none;
     gap: 2rem;
+}
+
+/* Ajuste responsivo da logo */
+@media (max-width: 768px) {
+    .logo-svg {
+        width: 140px;
+        height: 35px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-svg {
+        width: 120px;
+        height: 30px;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
 }
 
 .menu a {
@@ -109,7 +179,8 @@ nav {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    background: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1920&auto=format&fit=crop&q=80') center/cover no-repeat;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,20 +189,166 @@ nav {
     margin-top: 60px;
 }
 
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(46, 204, 113, 0.95),
+        rgba(39, 174, 96, 0.85)
+    );
+    z-index: 1;
+}
+
 .hero-content {
+    position: relative;
+    z-index: 2;
     color: white;
     max-width: 800px;
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .hero p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    opacity: 0.9;
+}
+
+.hero .btn {
+    background: white;
+    color: var(--cor-primaria);
+    padding: 1.2rem 2.5rem;
     font-size: 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.95);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para imagens */
+.hero-image {
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.hero-img:hover {
+    transform: scale(1.02);
+}
+
+.dietas-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.dietas-img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.food-image {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.category-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-img:hover {
+    transform: scale(1.05);
+}
+
+.sobre-image {
     margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.sobre-img:hover {
+    transform: scale(1.02);
+}
+
+/* Ajustes responsivos para imagens */
+@media (max-width: 768px) {
+    .hero-image {
+        margin: 1.5rem auto;
+    }
+
+    .dietas-img {
+        margin-bottom: 1rem;
+    }
+
+    .category-img {
+        height: 120px;
+    }
+
+    .sobre-image {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image {
+        margin: 1rem auto;
+    }
+
+    .category-img {
+        height: 100px;
+    }
 }
 
 /* Botões */
@@ -255,9 +472,34 @@ nav {
     font-size: 2rem;
 }
 
+.contato-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.contato-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contato-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.contato-img:hover {
+    transform: scale(1.02);
+}
+
 .contato-form {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
 }
 
 .form-group {
@@ -581,7 +823,144 @@ footer {
     color: #e74c3c;
 }
 
-/* Responsividade */
+/* Estilos para Preferências Alimentares */
+.section-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.food-preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.food-category-card {
+    background: var(--cor-card);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+    transition: var(--transicao);
+    border: 1px solid rgba(0,0,0,0.05);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.food-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
+}
+
+.card-header {
+    background: var(--gradiente-primario);
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: none;
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem;
+    border-radius: 12px;
+}
+
+.card-header h4 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.checkbox-label:hover {
+    background-color: #f8f9fa;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-label span {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Estilos específicos para o card de alergias */
+.alergias-card {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.alergias-card .card-header {
+    background: #fff3f3;
+}
+
+.alergias-card .card-header i {
+    color: #e74c3c;
+}
+
+.alergias-card .checkbox-label:hover {
+    background-color: #fff3f3;
+}
+
+.alergias-card .checkbox-label input[type="checkbox"] {
+    border-color: #e74c3c;
+}
+
+.alergias-card .checkbox-label input[type="checkbox"]:checked {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.alergias-card .checkbox-label span {
+    color: #444;
+}
+
+/* Ajuste responsivo para o card de alergias */
 @media (max-width: 768px) {
     .menu {
         display: none;
@@ -654,5 +1033,258 @@ footer {
     .plano-recomendacoes,
     .plano-alimentos-evitar {
         padding: 1rem;
+    }
+
+    .food-preferences-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-content {
+        padding: 0.75rem;
+    }
+    
+    .checkbox-label {
+        padding: 0.4rem;
+    }
+
+    .alergias-card {
+        max-width: 100%;
+    }
+}
+
+/* Ajustes para os cards de alimentos */
+.food-category-card .card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.food-image {
+    margin: -1rem -1rem 1rem -1rem;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.food-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+    pointer-events: none;
+}
+
+.category-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.food-category-card:hover .category-img {
+    transform: scale(1.05);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 992px) {
+    .contato-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contato-image {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contato-img {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-img {
+        height: 150px;
+    }
+
+    .contato-img {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-img {
+        height: 120px;
+    }
+
+    .contato-img {
+        min-height: 200px;
+    }
+}
+
+/* Estilos para a tabela de frutas */
+.fruits-table {
+    margin-top: 1.5rem;
+    background: rgba(46, 204, 113, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.fruits-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.5rem;
+}
+
+.fruits-grid td {
+    padding: 0.5rem;
+}
+
+.fruits-grid .checkbox-label {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin: 0;
+    border-radius: 8px;
+    transition: var(--transicao);
+}
+
+.fruits-grid .checkbox-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Estilos para o campo de outras alergias */
+.outras-alergias {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.outras-alergias label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.outras-alergias input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e74c3c;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.outras-alergias input:focus {
+    outline: none;
+    border-color: #c0392b;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
+}
+
+.outras-alergias input::placeholder {
+    color: #999;
+}
+
+/* Ajustes responsivos para a tabela de frutas */
+@media (max-width: 768px) {
+    .fruits-grid td {
+        padding: 0.25rem;
+    }
+
+    .fruits-grid .checkbox-label {
+        padding: 0.4rem;
+    }
+
+    .fruits-grid .checkbox-label span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .fruits-grid {
+        display: block;
+    }
+
+    .fruits-grid tr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .fruits-grid td {
+        padding: 0.2rem;
+    }
+
+    .fruits-grid .checkbox-label {
+        padding: 0.3rem;
+    }
+
+    .fruits-grid .checkbox-label span {
+        font-size: 0.85rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes responsivos para o hero */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 90vh;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero .btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 85vh;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero .btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
     }
 } 
